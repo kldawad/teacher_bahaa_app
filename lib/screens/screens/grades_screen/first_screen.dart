@@ -37,11 +37,12 @@ class _FirstScreenState extends State<FirstScreen> {
     }
   }
 
-  getPage2(int index) {
+  Widget getPage2(int index) {
     for (int i = 0; i < _map.length; i++) {
+      print(i);
       if (!_map["$i"].any((element) => index == element)) {
-        return Container(
-          color: Colors.pink,
+        Container(
+          color: Colors.orange,
           child: Center(
             child: Text(
               "$index",
@@ -52,12 +53,15 @@ class _FirstScreenState extends State<FirstScreen> {
           ),
         );
       } else {
-        return SizedBox();
+        SizedBox();
       }
     }
+    return Container(
+      color: Colors.amber,
+    );
   }
 
-  getPage3(int index) {
+  Widget getPage3(int index) {
     _map.forEach((key, value) {
       if (!_map[key].any((element) => index == element)) {
         Container(
@@ -75,6 +79,9 @@ class _FirstScreenState extends State<FirstScreen> {
         SizedBox();
       }
     });
+    return Container(
+      color: Colors.indigo,
+    );
   }
 
   @override
@@ -116,9 +123,6 @@ class _FirstScreenState extends State<FirstScreen> {
                           shrinkWrap: true,
                           itemCount: 21,
                           itemBuilder: (context, index) {
-                            // index < _map["1"].length
-                            //     ? print(_map["1"][2])
-                            //     : print("Out of Range");
                             return getPage2(index);
                           }),
                     ),
