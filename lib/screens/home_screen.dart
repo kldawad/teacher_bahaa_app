@@ -59,52 +59,65 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 15,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 2,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      color: _nameColor[index],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+            GridView.count(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              physics: NeverScrollableScrollPhysics(),
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              children: [
+                Card(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        "المراكز الثقافية",
+                        style: Theme.of(context).textTheme.headline5,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "المراكز الثقافية",
-                                style: Theme.of(context).textTheme.headline5,
-                              ),
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                color: Colors.black,
-                                child: Icon(
-                                  Icons.arrow_left,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'assets/Untitled-1.png',
-                              height: 150,
-                            ),
-                          ),
-                        ],
+                      Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: Colors.black,
+                        child: Icon(
+                          Icons.arrow_left,
+                          color: Colors.white,
+                          size: 40,
+                        ),
                       ),
-                    );
-                  }),
+                    ],
+                  ),
+                ),
+                Card(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        "المراكز الثقافية",
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: Colors.black,
+                        child: Icon(
+                          Icons.arrow_left,
+                          color: Colors.white,
+                          size: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 15,
@@ -135,6 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: 6,
                   itemBuilder: (context, index) {
                     return Card(
+                      color: Color(0xFFE5E28A),
                       elevation: 10,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -240,8 +254,7 @@ class CustomElevatedButton extends StatelessWidget {
             ),
           ),
           elevation: MaterialStateProperty.all(10),
-          backgroundColor: MaterialStateProperty.all(
-              Theme.of(context).colorScheme.secondary),
+          backgroundColor: MaterialStateProperty.all(Color(0xFFE5E28A)),
           fixedSize: MaterialStateProperty.all(Size(120, 40))),
       onPressed: () {
         Navigator.push(

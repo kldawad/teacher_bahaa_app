@@ -17,6 +17,8 @@ class _FirstScreenState extends State<FirstScreen> {
     "5": [0, 1],
   };
 
+  final List<Widget> _test = [];
+
   int counter = 0;
 
   Widget getPage(int index) {
@@ -37,12 +39,11 @@ class _FirstScreenState extends State<FirstScreen> {
     }
   }
 
-  Widget getPage2(int index) {
-    for (int i = 0; i < _map.length; i++) {
-      print(i);
+  getPage2(int index) {
+    for (int i = 0; i < 5; i++) {
       if (!_map["$i"].any((element) => index == element)) {
-        Container(
-          color: Colors.orange,
+        return Container(
+          color: Colors.pink,
           child: Center(
             child: Text(
               "$index",
@@ -53,15 +54,12 @@ class _FirstScreenState extends State<FirstScreen> {
           ),
         );
       } else {
-        SizedBox();
+        return SizedBox();
       }
     }
-    return Container(
-      color: Colors.amber,
-    );
   }
 
-  Widget getPage3(int index) {
+  getPage3(int index) {
     _map.forEach((key, value) {
       if (!_map[key].any((element) => index == element)) {
         Container(
@@ -79,9 +77,6 @@ class _FirstScreenState extends State<FirstScreen> {
         SizedBox();
       }
     });
-    return Container(
-      color: Colors.indigo,
-    );
   }
 
   @override
@@ -121,7 +116,7 @@ class _FirstScreenState extends State<FirstScreen> {
                             crossAxisSpacing: 3,
                           ),
                           shrinkWrap: true,
-                          itemCount: 21,
+                          itemCount: 20,
                           itemBuilder: (context, index) {
                             return getPage2(index);
                           }),
