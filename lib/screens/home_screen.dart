@@ -3,7 +3,17 @@
 import 'package:flutter/material.dart';
 import 'package:teacher_bahaa_app/screens/screens/grades_screen/first_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final List<Color> _nameColor = [
+    Color(0xFFE5E28A),
+    Color(0xFFB3EB98),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +60,56 @@ class HomeScreen extends StatelessWidget {
               height: 15,
             ),
             Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      color: _nameColor[index],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "المراكز الثقافية",
+                                style: Theme.of(context).textTheme.headline5,
+                              ),
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: Colors.black,
+                                child: Icon(
+                                  Icons.arrow_left,
+                                  color: Colors.white,
+                                  size: 40,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              'assets/Untitled-1.png',
+                              height: 150,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Padding(
               padding: const EdgeInsets.only(right: 20),
               child: Align(
                 alignment: Alignment.centerRight,
@@ -63,165 +123,42 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            GridView.count(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              childAspectRatio: 1.5,
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    childAspectRatio: 0.8,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Card(
-                        color: Theme.of(context).primaryColor,
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      elevation: 10,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
                             "محمد صوالحة",
                             textAlign: TextAlign.center,
-                            textDirection: TextDirection.rtl,
+                            style: Theme.of(context).textTheme.headline6!,
+                          ),
+                          Text(
+                            "99.3",
                             style: Theme.of(context)
                                 .textTheme
                                 .headline6!
-                                .copyWith(color: Colors.white),
+                                .copyWith(
+                                    color: Theme.of(context).primaryColor),
                           ),
-                        ),
+                        ],
                       ),
-                      Text(
-                        "99.3",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: Theme.of(context).primaryColor),
-                      ),
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Card(
-                        color: Theme.of(context).primaryColor,
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "عماد عوض",
-                            textAlign: TextAlign.center,
-                            textDirection: TextDirection.rtl,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "99.6",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: Theme.of(context).primaryColor),
-                      ),
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Card(
-                        color: Theme.of(context).primaryColor,
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "زينب ابو ظلام",
-                            textAlign: TextAlign.center,
-                            textDirection: TextDirection.rtl,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "98.4",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: Theme.of(context).primaryColor),
-                      ),
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Card(
-                        color: Theme.of(context).primaryColor,
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "رؤى السباتين",
-                            textAlign: TextAlign.center,
-                            textDirection: TextDirection.rtl,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "97.2",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: Theme.of(context).primaryColor),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                    );
+                  }),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 15),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: CustomElevatedButton(),
@@ -230,7 +167,6 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Image.asset('assets/bahaa2.png'),
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -257,7 +193,7 @@ class HomeScreen extends StatelessWidget {
                           textDirection: TextDirection.rtl,
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 15),
                         ),
